@@ -1,0 +1,3 @@
+<!-- Response formatting template (optional) -->
+
+# ...existing code...
