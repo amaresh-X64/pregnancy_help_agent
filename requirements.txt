@@ -1,6 +1,0 @@
-# Add your dependencies here
-langchain
-langgraph
-google-generativeai
-apscheduler
-python-dotenv

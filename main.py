@@ -13,8 +13,15 @@ if __name__ == "__main__":
         "diet": diet,
         "mood": mood
     })
-
+ 
     print("\n🤖 Answer:", result["qa_answer"])
     print("🩺 Health Tips:\n", result["daily_tip"])
     print("🔔 Reminders:", "\n".join(result["reminders"]))
     print("💖 Mood Boost:", result["mood_response"])
+
+    structured_result = {
+    "qa_answer": result.get("qa_answer", ""),
+    "daily_tip": result.get("daily_tip", ""),
+    "reminders": result.get("reminders", []),
+    "mood_response": result.get("mood_response", "")
+}     

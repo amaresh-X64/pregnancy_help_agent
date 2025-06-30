@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from graph import app
+from mamacare.graph import app
 
 def run_daily():
     result = app.invoke({
