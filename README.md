@@ -1,15 +1,55 @@
-# MamaCare 🤰🌸
+# MamaCare 🤰 – Streamlit Frontend
 
-MamaCare is an AI-powered pregnancy assistant that provides personalized health tips, reminders, and emotional support for expecting mothers. It uses multiple intelligent agents to answer questions, offer daily advice, and boost your mood.
+This is a Streamlit-based web frontend for the MamaCare pregnancy assistant. It connects to the agent pipeline defined in [`main.py`](mamacare/main.py) and [`graph.py`](mamacare/graph.py), providing a user-friendly interface for expecting mothers to get personalized pregnancy advice, health tips, reminders, and mood support.
 
 ---
 
 ## Features
 
-- **Pregnancy Q&A:** Get medically-informed answers to your pregnancy questions.
-- **Health Tips:** Receive nutrition and exercise tips tailored to your trimester and diet.
-- **Reminders:** Stay on track with daily reminders for vitamins, hydration, and more.
-- **Mood Support:** Enjoy gentle, encouraging messages based on your mood.
+- **Ask Pregnancy Questions:** Get medically-informed answers.
+- **Personalized Health Tips:** Nutrition and exercise tips based on your trimester and diet.
+- **Reminders:** Stay on track with daily reminders.
+- **Mood Support:** Receive gentle, encouraging messages based on your mood.
+
+---
+
+## Getting Started
+
+### 1. Install Requirements
+
+Make sure you have Python 3.8+ and install dependencies:
+
+```sh
+pip install streamlit python-dotenv google-generativeai langgraph langchain-core langchain-google-genai
+```
+
+### 2. Set Up Environment Variables
+
+Create a `.env` file in the `mamacare/` directory with your Google Gemini API key:
+
+```
+GEMINI_API_KEY=your_google_gemini_api_key
+```
+
+> **Note:** The `.env` file should be in the same directory as `streamlit_app.py`.
+
+### 3. Run the Streamlit App
+
+From the root of your project, run:
+
+```sh
+streamlit run mamacare/streamlit_app.py
+```
+
+This will open the MamaCare web app in your browser.
+
+---
+
+## Usage
+
+1. Enter your pregnancy question.
+2. Select your trimester, diet, and mood.
+3. Click **Get Answer** to receive personalized advice, tips, reminders, and mood support.
 
 ---
 
@@ -18,105 +58,25 @@ MamaCare is an AI-powered pregnancy assistant that provides personalized health 
 ```
 mamacare/
 │   .env
-│   api.py
-│   graph.py
+│   streamlit_app.py
 │   main.py
-│   requirements.txt
+│   graph.py
 │   scheduler.py
+│   app.py
 │
 ├── agents/
-│     __init__.py
 │     health_agent.py
 │     mood_agent.py
 │     qa_agent.py
 │     reminder_agent.py
-│
-├── frontend/
-│     app.js
-│     index.html
-│     style.css
-│
-└── templates/
-      response_template.md
 ```
 
 ---
 
-## Getting Started
+## Notes
 
-### 1. Clone the repository
-
-```sh
-git clone https://github.com/yourusername/mamacare.git
-cd mamacare
-```
-
-### 2. Install dependencies
-
-It is recommended to use a virtual environment:
-
-```sh
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### 3. Set up environment variables
-
-Create a `.env` file in the `mamacare/` directory with your Google Gemini API key:
-
-```
-GEMINI_API_KEY=your_google_gemini_api_key
-```
-
-### 4. Run the backend API
-
-From the parent directory of `mamacare/`, start the FastAPI server:
-
-```sh
-uvicorn mamacare.api:app --reload --port 8000
-```
-
-### 5. Run the frontend
-
-Open `frontend/index.html` in your browser.  
-The frontend will connect to the backend at `http://localhost:8000/ask`.
-
----
-
-## Usage
-
-- Ask pregnancy-related questions, select your trimester, diet, and mood.
-- Get structured answers, daily tips, reminders, and mood support.
-
----
-
-## Command-Line Interface
-
-You can also run the assistant in the terminal:
-
-```sh
-python mamacare/main.py
-```
-
----
-
-## Scheduled Daily Tips
-
-To receive daily tips at 9:00 AM, run:
-
-```sh
-python mamacare/scheduler.py
-```
-
----
-
-## Technologies Used
-
-- Python, FastAPI
-- LangGraph, LangChain, Google Generative AI
-- JavaScript, HTML, CSS (Frontend)
-- APScheduler
+- The Streamlit frontend uses the same agent pipeline as the CLI in [`main.py`](mamacare/main.py).
+- For best results, ensure your `.env` file contains a valid Gemini API key.
 
 ---
 
@@ -129,9 +89,3 @@ MIT License
 ## Disclaimer
 
 MamaCare is for informational purposes only and does not replace professional medical advice. Always consult your healthcare provider.
-
----
-
-## Author
-
-[Amaresh 🔥](https://github.com/yourusername)
